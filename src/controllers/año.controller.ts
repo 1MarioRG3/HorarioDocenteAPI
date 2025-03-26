@@ -4,7 +4,7 @@ import { Año } from '../entities/Año';
 export const getAllAños = async (req:Request,res:Response) => {
   try {
     const años = await Año.find();
-    res.status(200).json();
+    res.status(200).json(años);
   } catch (error) {
     res.status(500).json({ message: "Algo salio mal" });
   }
@@ -17,7 +17,7 @@ export const getAñoById = async (req:Request,res:Response) => {
     if(año){
       res.status(200).json(año);
     }else{
-      res.status(404).json();
+      res.status(404).json({ message: "No se encontro el año"});
     }
   } catch (error) {
     res.status(500).json({ message: "Algo salio mal"});
@@ -46,7 +46,7 @@ export const updateNewAño = async (req:Request,res:Response) => {
       await año.save();
       res.status(204).json();
     }else{
-      res.status(404).json();
+      res.status(404).json({ message: "No se encontro el año"});
     }
   } catch(error){
     res.status(500).json({ message: "Algo salio mal"});

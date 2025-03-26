@@ -1,4 +1,5 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import { masterGuard } from './middewares/login.guard';
 
 const options: swaggerJsdoc.Options = {
     definition: {
@@ -6,7 +7,7 @@ const options: swaggerJsdoc.Options = {
       info: {
         title: 'API Horario Documentation',
         version: '1.0.0',
-        description: 'Documentación de la API Horario',
+        description: 'DIAGRAMA ENTIDAD-RELACION DE LA BASE DE DATOS: <br><br> <img src="/api/er-diagram" alt="Modelo Entidad-Relación" width="600" >',
       },
       servers: [
         {
@@ -16,11 +17,18 @@ const options: swaggerJsdoc.Options = {
       ],
       components: {
         securitySchemes: {
-          bearerAuth: {
-            type: 'http',
-            scheme: 'bearer',
-            bearerFormat: 'JWT',
+          ADMIN: { 
+            type: 'apiKey',
+            in: 'header',
+            name: 'master-token',
+            description: 'Token de acceso en el header `master-token`'
           },
+          JEFE: {  
+            type: 'apiKey',
+            in: 'header',
+            name: 'jefe-token',
+            description: 'Token de acceso en el header `jefe-token`'
+          }
         },
       },
       security: [
@@ -29,7 +37,7 @@ const options: swaggerJsdoc.Options = {
         },
       ],
     },
-    apis: ['./src/routes/año.router.ts'], // Ajusta según tu estructura de archivos
+    apis: ['./src/routes/*.ts','./src/entities/*.ts'], // Ajusta según tu estructura de archivos
   };
 
   export const swaggerSpec = swaggerJsdoc(options);

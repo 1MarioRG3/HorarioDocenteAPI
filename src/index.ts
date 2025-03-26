@@ -2,12 +2,15 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import fs from 'fs';
+import path from 'path';
+
 import app from './app';
 import { AppDataSource } from './db';
 
 import { swaggerSpec } from './swagger';
 import swaggerUi from 'swagger-ui-express';
-import { Request,Response } from 'express';
+import { Request, Response } from 'express';
 
 const PORT = process.env.PORT || '3000';
 
@@ -23,6 +26,16 @@ async function main() {
             res.send(swaggerSpec);
         });
         console.log(`DOCUMENTACION DISPONIBLE EN: http://localhost:${process.env.PORT || "3000"}/docs`);
+        //MODELO ENTIDAD RELACION
+        app.get('/api/er-diagram', (req:Request, res:Response) => {
+            const imagePath = path.join(__dirname, '../public/Diagrama Entidad-Relación.png');
+
+            if (!fs.existsSync(imagePath)) {
+                res.status(404).send('Diagrama ER no encontrado');
+            }
+
+            res.sendFile(imagePath);
+        });
 
 
     } catch (error) {
