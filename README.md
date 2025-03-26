@@ -53,7 +53,7 @@ jefe-token: <token-secreto>  # Para acceder a las rutas administrativas del hora
 ## 📄 Documentación API
 
 Accede a la documentación interactiva en:
-[http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+[http://localhost:3000/api-docs](http://localhost:3000/docs)
 
 (Despues de correr el proyecto)
 
