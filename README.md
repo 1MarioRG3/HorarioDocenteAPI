@@ -55,8 +55,11 @@ jefe-token: <token-secreto>  # Para acceder a las rutas administrativas del hora
 Accede a la documentación interactiva en:
 [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
+(Despues de correr el proyecto)
 
 ## 🌍 Variables de entorno
+
+Se deben configuarar estas variables de entorno en el archivo .env y cambiar los valores
 
 | Variable            | Descripción                     | Valor por defecto |
 |---------------------|---------------------------------|-------------------|
@@ -72,4 +75,4 @@ Accede a la documentación interactiva en:
 
 ---
 
-Hecho por MarioRG - [@1MarioRG3]([https://github.com/tu-usuario](https://github.com/1MarioRG3)])
+Hecho por MarioRG - [@1MarioRG3](https://github.com/1MarioRG3)
